@@ -107,8 +107,6 @@ void write_callback(Device *device, Param *param, const param_val_t val, void *p
 
         param->updateAndReport(val);
         
-        
-
           
           if ((relay_state==false) && esp_timer_is_active(timer)) // turn off the timer once the geyser switch is off
          {
@@ -238,8 +236,12 @@ void loop()
 
       
       }
-      if (onceonly == 1 && remaining_time == 0 )
+      if (onceonly == 1 && remaining_time == 0 ) {
         stop_timer();
+        onceonly=0;
+        remaining_time=DEFAULT_DURATION_LEVEL;
+
+      }
      
         
 
